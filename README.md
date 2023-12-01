@@ -1,6 +1,6 @@
 # 2023 Advent of Code Repository
 
-The code in this repository is the work of smart_dude04 for the [2023 Advent of Code](https://adventofcode.com/2023) coding challenges.
+The code in this repository is the work of SmartDude04 for the [2023 Advent of Code](https://adventofcode.com/2023) coding challenges.
 
 ## Structure
 
