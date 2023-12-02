@@ -4,19 +4,19 @@ all_nums = []
 
 # convert spelled numbers to a real number
 for i, line in enumerate(lines):
-    lines[i] = lines[i].replace("one", "o1ne")
-    lines[i] = lines[i].replace("two", "t2wo")
-    lines[i] = lines[i].replace("three", "t3hree")
-    lines[i] = lines[i].replace("four", "f4our")
-    lines[i] = lines[i].replace("five", "f5ive")
-    lines[i] = lines[i].replace("six", "s6ix")
-    lines[i] = lines[i].replace("seven", "s7even")
-    lines[i] = lines[i].replace("eight", "e8ight")
-    lines[i] = lines[i].replace("nine", "n9ine")
+    line = line.replace("one", "o1ne")
+    line = line.replace("two", "t2wo")
+    line = line.replace("three", "t3hree")
+    line = line.replace("four", "f4our")
+    line = line.replace("five", "f5ive")
+    line = line.replace("six", "s6ix")
+    line = line.replace("seven", "s7even")
+    line = line.replace("eight", "e8ight")
+    line = line.replace("nine", "n9ine")
+
+    lines[i] = line    
+    # print(line)
     
-    print(lines[i])
-                
-        
 for line in lines:
     two_nums = []
     # Go forwards into the list and get the first character
@@ -35,7 +35,7 @@ for line in lines:
             two_nums.append(digit)
             break
     
-    print(two_nums)
+    # print(two_nums)
     append_num = int(two_nums[0] + "" + two_nums[1])
     
     all_nums.append(append_num)
