@@ -8,7 +8,6 @@ for line in lines:
     for char in range(len(line)):
         if line[char].isdigit():
             digit = line[char]
-            digit = digit
             two_nums.append(digit)
             break
         
@@ -16,7 +15,6 @@ for line in lines:
     for char in reversed(range(len(line))):
         if line[char].isdigit():
             digit = line[char]
-            digit = digit
             two_nums.append(digit)
             break
         
