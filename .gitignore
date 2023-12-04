@@ -1,2 +1,2 @@
 # Ignore all inputs to the code
-*.txt
+**/*.txt
