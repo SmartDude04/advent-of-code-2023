@@ -1,47 +1,37 @@
 # Use list comprehension to open the file and parse through
 lines = [line.strip() for line in open("day-5/day-5-snippet.txt", "r")]
 
-# Get values for each part
-all_maps = [[], [], [], [], [], [], []]
+seeds = lines[0].split(": ")[1].split()
 
-seeds = lines[0]
-seeds = seeds[7:].split()
-lines = lines[2:]
+lines = lines[3:]
 
-lines = [lines.pop(i) for i in reversed(range(len(lines))) if lines[i] != ""]
-lines = [line.split() for line in lines]
-lines = lines[::-1]
+print(lines)
+seed_to_soil = []
+soil_to_fertilizer = []
+fertilizer_to_water = []
+water_to_light = []
+light_to_temperature = []
+temperature_to_humidity = []
+humidity_to_location = []
 
-current_map_index = 0
-for i, line in enumerate(lines):
-    # If the element is not a digit, we know it is the start of a new section
+current_map = 0
+for line in lines:
+    if not line[0].isdigit():
+        current_map += 1
+    else:
+        if current_map == 0:
+            seed_to_soil.append(line)
+        elif current_map == 1:
+            seed_to_soil.append(line)
+        elif current_map == 2:
+            seed_to_soil.append(line)
+        elif current_map == 3:
+            seed_to_soil.append(line)
+        elif current_map == 4:
+            seed_to_soil.append(line)
+        elif current_map == 5:
+            seed_to_soil.append(line)
+        elif current_map == 6:
+            seed_to_soil.append(line)
     
-    if line[1] == 'map:':
-        do_break = False
-        for row in lines[i + 1:]:
-            if row[0].isdigit():
-                all_maps[current_map_index].append(row)
-            else:
-                current_map_index += 1
-                break
-
-# Generate full maps
-for i, map in enumerate(all_maps):
-    full_map = [i for i in range(100)]
-    print(full_map)
-    for j, gen_map in enumerate(map):
-        iterations = gen_map[2]
-        start = gen_map[0]
-        source = gen_map[1]
-        
-        
-
-# # Find the lowest seed
-# def get_location_for_seed(seed_index):
-#     seed = seeds[seed_index]
-    
-#     current_spot = seed
-#     for map in all_maps:
-        
-
-print(all_maps)
+print(seed_to_soil)
