@@ -26,8 +26,15 @@ for i, line in enumerate(lines):
                 break
 
 # Generate full maps
-for gen_map in all_maps:
-    
+for i, map in enumerate(all_maps):
+    full_map = [i for i in range(100)]
+    print(full_map)
+    for j, gen_map in enumerate(map):
+        iterations = gen_map[2]
+        start = gen_map[0]
+        source = gen_map[1]
+        
+        
 
 # # Find the lowest seed
 # def get_location_for_seed(seed_index):
