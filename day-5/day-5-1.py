@@ -1,5 +1,5 @@
 # Use list comprehension to open the file and parse through
-lines = [line.strip() for line in open("day-5/day-5.txt", "r")]
+lines = [line.strip() for line in open("day-5/day-5-snippet.txt", "r")]
 
 seeds = lines[0].split(": ")[1].split()
 seeds = [int(seed) for seed in seeds]
