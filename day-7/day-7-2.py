@@ -2,7 +2,7 @@ from functools import cmp_to_key
 import operator
 
 # Use list comprehension to open the file and parse through
-lines = [line.strip().split() for line in open("day-7/day-7-snippet.txt", "r")]
+lines = [line.strip().split() for line in open("day-7/day-7.txt", "r")]
 RANKING = ['A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2', 'J']
 
 
@@ -40,8 +40,9 @@ def get_type(hand):
     if hand == "JJJJJ":
         return 6
     
+    
     # That max doesnt work if each card is unique or if the max card is a joker already
-    if (len(card_set) == 5 or max_card == 'J') and 'J' in all_cards:
+    if (len(card_set) == 5) and 'J' in all_cards:
         # Find the card with the max points
         first_ranking = RANKING.index(first_card)
         second_ranking = RANKING.index(second_card)
@@ -59,7 +60,14 @@ def get_type(hand):
             max_card = fourth_card
         else:
             max_card = fifth_card
-         
+            
+    
+    if max_card == 'J':
+        temp_dict = card_dict.copy()
+        temp_dict.pop('J')
+        max_card = max(temp_dict.items(), key=operator.itemgetter(1))[0]
+                   
+          
     for i, card in enumerate(all_cards):
         if card == 'J':
             all_cards[i] = max_card
@@ -68,8 +76,9 @@ def get_type(hand):
     if 'J' in card_set:
         card_set.remove('J')
         card_dict.pop('J')
-        
-    # print(all_cards, card_set, card_dict)
+    
+    # Use for debugging
+    # print(all_cards, card_set, card_dict, max_card)
                     
     if len(card_set) == 1:
         return 6
