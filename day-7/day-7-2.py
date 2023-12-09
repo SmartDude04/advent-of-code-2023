@@ -1,8 +1,9 @@
 from functools import cmp_to_key
+import operator
 
 # Use list comprehension to open the file and parse through
 lines = [line.strip().split() for line in open("day-7/day-7-snippet.txt", "r")]
-RANKING = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
+RANKING = ['A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2', 'J']
 
 
 #      Key:
@@ -33,7 +34,43 @@ def get_type(hand):
         fourth_card: all_cards.count(fourth_card),
         fifth_card: all_cards.count(fifth_card)
     }
-            
+    
+    max_card = max(card_dict.items(), key=operator.itemgetter(1))[0]
+    
+    if hand == "JJJJJ":
+        return 6
+    
+    # That max doesnt work if each card is unique or if the max card is a joker already
+    if (len(card_set) == 5 or max_card == 'J') and 'J' in all_cards:
+        # Find the card with the max points
+        first_ranking = RANKING.index(first_card)
+        second_ranking = RANKING.index(second_card)
+        third_ranking = RANKING.index(third_card)
+        fourth_ranking = RANKING.index(fourth_card)
+        fifth_ranking = RANKING.index(fifth_card)
+        
+        if first_ranking < min(second_ranking, third_ranking, fourth_ranking, fifth_ranking):
+            max_card = first_card
+        elif second_ranking < min(first_ranking, third_ranking, fourth_ranking, fifth_ranking):
+            max_card = second_card
+        elif third_ranking < min(first_ranking, second_ranking, fourth_ranking, fifth_ranking):
+            max_card = third_card
+        elif fourth_ranking < min(first_ranking, second_ranking, third_ranking, fifth_ranking):
+            max_card = fourth_card
+        else:
+            max_card = fifth_card
+         
+    for i, card in enumerate(all_cards):
+        if card == 'J':
+            all_cards[i] = max_card
+            card_dict[max_card] += 1
+    
+    if 'J' in card_set:
+        card_set.remove('J')
+        card_dict.pop('J')
+        
+    # print(all_cards, card_set, card_dict)
+                    
     if len(card_set) == 1:
         return 6
     
@@ -86,5 +123,6 @@ def get_points(sorted_hands):
     return sum_points
 
 lines.sort(key=cmp_to_key(compare_values), reverse=True)
-
+for line in lines:
+    print(line)
 print(get_points(lines))
