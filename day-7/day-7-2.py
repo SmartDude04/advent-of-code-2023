@@ -132,6 +132,6 @@ def get_points(sorted_hands):
     return sum_points
 
 lines.sort(key=cmp_to_key(compare_values), reverse=True)
-for line in lines:
-    print(line)
+# for line in lines:
+#     print(line)
 print(get_points(lines))
