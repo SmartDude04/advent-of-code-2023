@@ -4,7 +4,7 @@ The code in this repository is the work of SmartDude04 for the [2023 Advent of C
 
 ## Structure
 
-Each day is organized into a folder. Inside those folders, two files of code (one for each challenge) are included, as well as the example input and the input given to me.
+Each day is organized into a folder. Inside those folders, two files of code (one for each challenge) are included, as well as the example input and the input given to me (inputs hidden in .gitignore to [preserve AoC](https://adventofcode.com/about#faq_copying)).
 
 ## Use
 
