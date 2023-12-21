@@ -38,7 +38,31 @@ def check_reflect(map: list[str], horizontal: int, vertical: int) -> bool:
                     return False
     
     return True
+
+def get_reflect_coords(map: list[str], skip_x: int, skip_y: int) -> list[int] | int:
+    '''Returns the coordanites of reflection for a specific map.
+    You can also skip certain values for vertical/horizontal checks'''
+    
+    horiz_to_check = list(range(len(map)))
+    horiz_to_check.pop(skip_y - 1)
+    # Check horizontal
+    for i in range(len(map)):
+        if check_reflect(map, i, 0):
+            return [0, i]
+    
+    for i in range(len(map[0])):
+        if check_reflect(map, 0, i):
+            return [i, 0]
         
+    return -1
+
+def find_new_reflection(map: list[str]) -> int | None:
+    
+    # Get the current value of reflection
+    current_reflect_coords = get_reflect_coords(map, 0, 0)
+    
+    # Go through each value and change it, then check for reflection
+
 # Split up into each map
 maps = []
 current_map = []
@@ -65,6 +89,6 @@ for current_map in maps:
             map_val = i * 100
             
     sum += map_val
-    # print(map_val)
+    print(map_val)
 
 print(sum)
