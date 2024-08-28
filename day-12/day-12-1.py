@@ -1,4 +1,4 @@
-def check_valid_combination(springs, groups):
+def check_valid_combination(springs, groups) -> bool:
     checked_groups = []
     on_group = False
 
